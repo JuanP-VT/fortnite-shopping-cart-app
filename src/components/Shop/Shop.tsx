@@ -1,9 +1,16 @@
 import React from "react";
-
-type Props = {};
+import { ShopWrap } from "./Shop.Style";
+import { ShopItem } from "../../Interfaces";
+type Props = {
+  catalog: ShopItem[];
+};
 
 function Shop({}: Props) {
-  return <div>Shop</div>;
+  return (
+    <ShopWrap>
+      <div id="catalogContainer"></div>
+    </ShopWrap>
+  );
 }
 
 export default Shop;
