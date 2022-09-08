@@ -1,11 +1,16 @@
 // This function returns a 'Item Card' HTMLDivElement
+import React from "react";
+import { ShopItem } from "../../Interfaces";
 export const CreateItemCard = (
   index: number,
   imgSrc: string,
   name: string,
   description: string,
   price: number,
-  rarity: string
+  rarity: string,
+  catalog: ShopItem[],
+  shoppingCart: ShopItem[],
+  setShoppingCart: React.Dispatch<React.SetStateAction<ShopItem[]>>
 ): HTMLDivElement => {
   const itemCard = document.createElement("div");
   itemCard.classList.add("itemCard");
@@ -34,6 +39,20 @@ export const CreateItemCard = (
   cartBox.classList.add("cartBox");
   const addButton = document.createElement("button");
   addButton.textContent = "Add To Cart";
+  // Handle Add to cart event
+  addButton.addEventListener("click", (e: Event) => {
+    const target = e.target as HTMLDivElement;
+    const parent = target.parentElement?.parentElement as HTMLDivElement;
+    const index = parseInt(parent.getAttribute("index") as string);
+    const newCart = shoppingCart;
+    //Check if item is already in cart
+    if (shoppingCart.includes(catalog[index])) {
+      return;
+    } else {
+      newCart.push(catalog[index]);
+      setShoppingCart(newCart);
+    }
+  });
   cartBox.append(addButton);
   itemCard.append(cartBox);
   return itemCard;

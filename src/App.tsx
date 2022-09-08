@@ -32,6 +32,8 @@ function App() {
   const currentLocation = useLocation();
   const pathName = currentLocation.pathname;
   const [CurrentRoute, setCurrentRoute] = useState(pathName);
+  // This hook will manage the shopping cart
+  const [ShoppingCart, setShoppingCart] = useState<ShopItem[]>([]);
   useEffect(() => {
     setCurrentRoute(pathName);
   }, [pathName]);
@@ -42,8 +44,25 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop catalog={ShopItems} />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/shop"
+          element={
+            <Shop
+              catalog={ShopItems}
+              ShoppingCart={ShoppingCart}
+              setShoppingCart={setShoppingCart}
+            />
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              ShoppingCart={ShoppingCart}
+              setShoppingCart={setShoppingCart}
+            />
+          }
+        />
       </Routes>
     </AppWrap>
   );

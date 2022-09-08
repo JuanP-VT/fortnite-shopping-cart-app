@@ -4,12 +4,13 @@ import { ShopItem } from "../../Interfaces";
 import { CreateItemCard } from "./CreateItemCard";
 type Props = {
   catalog: ShopItem[];
+  ShoppingCart: ShopItem[];
+  setShoppingCart: React.Dispatch<React.SetStateAction<ShopItem[]>>;
 };
 
-function Shop({ catalog }: Props) {
+function Shop({ catalog, ShoppingCart, setShoppingCart }: Props) {
   useEffect(() => {
     const container = document.querySelector("#catalogContainer");
-    console.log(catalog);
     //Crete a display card for each item
     catalog.forEach((item, index) => {
       const itemCard = CreateItemCard(
@@ -18,11 +19,14 @@ function Shop({ catalog }: Props) {
         item.items[0].name,
         item.items[0].description,
         item.finalPrice,
-        item.items[0].rarity.value
+        item.items[0].rarity.value,
+        catalog,
+        ShoppingCart,
+        setShoppingCart
       );
       container?.append(itemCard);
     });
-  }, [catalog]);
+  }, [catalog, setShoppingCart, ShoppingCart]);
   return (
     <ShopWrap>
       <div id="catalogContainer"></div>
