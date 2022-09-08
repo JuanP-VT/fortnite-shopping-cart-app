@@ -9,11 +9,17 @@ export const NavWrap = styled.div<Nav>`
   display: flex;
   width: 100%;
   padding: 10px;
+  position: fixed;
+  height: 50px;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   .links {
     display: flex;
     width: 100%;
     justify-content: center;
     gap: 40px;
+    font-size: 20px;
+    text-align: center;
     // This will change the border of the link depending on the current route
     .homeLink {
       border-bottom: ${(props) =>
