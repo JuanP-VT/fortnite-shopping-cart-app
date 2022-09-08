@@ -7,9 +7,11 @@ import Nav from "./components/Nav/Nav";
 import Shop from "./components/Shop/Shop";
 import { GlobalStyle } from "./GlobalStyles";
 import { ShopItem } from "./Interfaces";
+import { useLocation } from "react-router-dom";
+
 function App() {
-  const [ShopItems, setShopItems] = useState<ShopItem[]>([]);
   // This hook will call fortnite API and filter the response
+  const [ShopItems, setShopItems] = useState<ShopItem[]>([]);
   useEffect(() => {
     callApi();
     async function callApi() {
@@ -26,10 +28,18 @@ function App() {
       setShopItems(filtered);
     }
   }, []);
+  // This hook is to manage current router location
+  const currentLocation = useLocation();
+  const pathName = currentLocation.pathname;
+  const [CurrentRoute, setCurrentRoute] = useState(pathName);
+  useEffect(() => {
+    setCurrentRoute(pathName);
+  }, [pathName]);
   return (
     <AppWrap>
       <GlobalStyle />
-      <Nav />
+      <Nav currentRoute={CurrentRoute} />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
