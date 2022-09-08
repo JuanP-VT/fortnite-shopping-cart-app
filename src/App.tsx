@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Cart from "./components/Cart/Cart";
+import Home from "./components/Home/Home";
+import Nav from "./components/Nav/Nav";
+import Shop from "./components/Shop/Shop";
 import { ShopItem } from "./Interfaces";
 function App() {
   const [ShopItems, setShopItems] = useState<ShopItem[]>([]);
@@ -19,7 +24,16 @@ function App() {
       setShopItems(filtered);
     }
   }, []);
-  return <></>;
+  return (
+    <div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
