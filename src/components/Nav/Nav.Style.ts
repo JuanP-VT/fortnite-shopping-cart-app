@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const NavWrap = styled.div`
+type Nav = {
+  currentRoute: string;
+};
+
+export const NavWrap = styled.div<Nav>`
   display: flex;
   width: 100%;
   padding: 10px;
@@ -10,7 +14,25 @@ export const NavWrap = styled.div`
     width: 100%;
     justify-content: center;
     gap: 40px;
-    //This will highlight the link depending on the current route
+    // This will change the border of the link depending on the current route
+    .homeLink {
+      border-bottom: ${(props) =>
+        props.currentRoute === "/"
+          ? "4px solid blue"
+          : "4px solid transparent"};
+    }
+    .shopLink {
+      border-bottom: ${(props) =>
+        props.currentRoute === "/shop"
+          ? "4px solid blue"
+          : "4px solid transparent"};
+    }
+    .cartLink {
+      border-bottom: ${(props) =>
+        props.currentRoute === "/cart"
+          ? "4px solid blue"
+          : "4px solid transparent"};
+    }
   }
 `;
 export const StyledLink = styled(Link)`
