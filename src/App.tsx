@@ -4,6 +4,7 @@ import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
 import Nav from "./components/Nav/Nav";
 import Shop from "./components/Shop/Shop";
+import { GlobalStyle } from "./GlobalStyles";
 import { ShopItem } from "./Interfaces";
 function App() {
   const [ShopItems, setShopItems] = useState<ShopItem[]>([]);
@@ -26,6 +27,7 @@ function App() {
   }, []);
   return (
     <div>
+      <GlobalStyle />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
