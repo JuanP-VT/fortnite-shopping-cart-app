@@ -6,4 +6,10 @@ export const ShopWrap = styled.div`
   margin-top: 50px;
   width: 100%;
   height: 100%;
+  #catalogContainer {
+    .itemCard {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 `;
