@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { AppWrap } from "./App.Style";
 import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
 import Nav from "./components/Nav/Nav";
@@ -26,7 +27,7 @@ function App() {
     }
   }, []);
   return (
-    <div>
+    <AppWrap>
       <GlobalStyle />
       <Nav />
       <Routes>
@@ -34,7 +35,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
-    </div>
+    </AppWrap>
   );
 }
 

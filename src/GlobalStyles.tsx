@@ -6,3 +6,6 @@ export const GlobalStyle = createGlobalStyle`
    box-sizing:border-box;
   }
 `;
+
+// font-family: 'Luckiest Guy', cursive;
+// font-family: 'Roboto', sans-serif;
