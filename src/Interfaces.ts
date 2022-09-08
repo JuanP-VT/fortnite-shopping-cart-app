@@ -51,7 +51,7 @@ export interface Item {
 export interface ItemImages {
   smallIcon: string;
   icon: string;
-  featured: null | string;
+  featured: string;
   other: Other | null;
 }
 
